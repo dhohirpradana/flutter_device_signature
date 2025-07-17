@@ -14,8 +14,12 @@ class MainApp extends StatelessWidget {
     final deviceInfo = DeviceInfoPlugin();
     final info = await deviceInfo.androidInfo;
 
-    final raw =
-        '${info.id}-${info.model}-${info.manufacturer}-${info.fingerprint}';
+    final deviceId = info.id;
+    final model = info.model;
+    final manufacturer = info.manufacturer;
+    final fingerprint = info.fingerprint;
+
+    final raw = '$deviceId-$model-$manufacturer-$fingerprint';
     return sha256.convert(utf8.encode(raw)).toString();
   }
 
